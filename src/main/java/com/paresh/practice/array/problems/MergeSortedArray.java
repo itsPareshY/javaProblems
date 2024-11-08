@@ -1,4 +1,4 @@
-package com.paresh.practice;
+package com.paresh.practice.array.problems;
 
 import java.util.Arrays;
 import java.util.Scanner;
