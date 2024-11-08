@@ -1,0 +1,18 @@
+#to set forkJoinpool threads in for parallel stream for JVM
+java -Djava.util.concurrent.ForkJoinPool.common.parallelism=8 MyClass 
+althoug for better control use custom forkjoinpool with parallel streams
+
+ ForkJoinPool customPool = new ForkJoinPool(4);
+
+        List<Integer> numbers = IntStream.range(0, 10)
+                                        .boxed()
+                                        .collect(Collectors.toList());
+
+        // Submit the parallel stream to the custom pool
+        customPool.submit(() -> 
+            numbers.parallelStream()
+                   .map(number -> number * number)  // Square each number
+                   .forEach(System.out::println)    // Print the result
+        ).join();  // Wait for the task to complete
+
+        customPool.shutdown();  // Shutdown the pool after use
