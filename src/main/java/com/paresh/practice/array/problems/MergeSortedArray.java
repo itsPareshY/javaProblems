@@ -41,36 +41,36 @@ public class MergeSortedArray {
         System.out.println("Input arr1");
         String arr1 = scanner.nextLine();
         String[] inputStrArr = arr1.split(" ");
-        int[] num1 = getIntArr(inputStrArr); // 1 2 3 0 0 0
+        int[] nums1 = getIntArr(inputStrArr); // 1 2 3 0 0 0
         System.out.println("Input arr1 size");
         int m = scanner.nextInt(); //3
         scanner.nextLine(); // clean the line as next int does not consume line so causing issue reading next arr2
         System.out.println("Input arr2");
         String arr2 = scanner.nextLine();
         inputStrArr = arr2.split(" ");
-        int[] num2 = getIntArr(inputStrArr); // 2 5 6
+        int[] nums2 = getIntArr(inputStrArr); // 2 5 6
         System.out.println("Input arr2 size");
         int n = scanner.nextInt(); //3
 
-        int i = m-1; // pointer to last element of num1
-        int j = n-1; // pointer to last element of num2
-        int k = num1.length -1; // // pointer to last element of num1 full array
+        int i = m-1; // pointer to last element of nums1
+        int j = n-1; // pointer to last element of nums2
+        int k = nums1.length -1; // // pointer to last element of nums1 full array
 
         while(i >=0 && j >=0){
-            System.out.println(Arrays.toString(num1));
-                if(num1[i]> num2[j]) {
-                    num1[k--] = num1[i--];
+            System.out.println(Arrays.toString(nums1));
+                if(nums1[i]> nums2[j]) {
+                    nums1[k--] = nums1[i--];
                 }else{
-                    num1[k--] = num2[j--];
+                    nums1[k--] = nums2[j--];
                 }
         }
 
         while (j >= 0) {
-            System.out.println(Arrays.toString(num1));
-            num1[k--] = num2[j--];
+            System.out.println(Arrays.toString(nums1));
+            nums1[k--] = nums2[j--];
         }
 
-        System.out.println(Arrays.toString(num1));
+        System.out.println(Arrays.toString(nums1));
     }
 
     private static int[] getIntArr(String[] inputStrArr) {
