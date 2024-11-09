@@ -8,7 +8,7 @@ public class RemoveDuplicatesFrmSortedArr {
         int[]  arr = {0,0,1,1,1,2,2,3,3,4};
 
         int uniquePos1 = 0;
-        int uniquePos2 = 0;
+        int count = 1;
         int j = 1;
         int k = arr.length - 1;
 
@@ -20,7 +20,9 @@ public class RemoveDuplicatesFrmSortedArr {
             else {
                 arr[uniquePos1 +1] = arr[j];
                 uniquePos1++;
+                count++;
             }
         }
+        System.out.println(count);
     }
 }
