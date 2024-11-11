@@ -25,6 +25,9 @@ import java.util.Map;
  */
 public class MajorityElement {
     public static int majorityElementSpaceNotOptimized(int[] nums) {
+        if(nums.length == 1 ){
+            return nums[0];
+        }
         Map<Integer,Integer> countElement = new HashMap<>();
         for (int i = 0 ; i < nums.length ; i++){
             if(countElement.containsKey(nums[i])){
