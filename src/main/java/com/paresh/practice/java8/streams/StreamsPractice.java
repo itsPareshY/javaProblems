@@ -125,7 +125,15 @@ public class StreamsPractice {
          * System.out.println("Second highest rank student  : "+student);
          *
          *
-         *
+         *What is the difference between map and flatMap?
+
+         flatMap: Used for transforming each element into a Stream and then flattening the result into a single Stream.
+
+         map: Transforms each element of the stream into another object. The output is a Stream of the same size
+
+         map: Transforms each element of the stream into another object. The output is a Stream of the same size
+map: Transforms each element of the stream into another object. The output is a Stream of the same size
+         
          */
 
 
