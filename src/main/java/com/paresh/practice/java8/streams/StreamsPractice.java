@@ -74,6 +74,61 @@ public class StreamsPractice {
 
         System.out.println("All department names : "+departmentsNames);
 
+        // Find the list of students whose age is less than 30
+
+        List<Student> ageLessThan30 = practice.list.stream().filter(student -> student.getAge() < 30).collect(Collectors.toList());
+        System.out.println("Students with Age less than 30 "+ageLessThan30);
+
+
+        //8- Find the list of students whose rank is in between 50 and 100
+        List<Student> rankWise = practice.list.stream().filter(student -> student.getRank() >=50 && student.getRank() <= 100)
+                .collect(Collectors.toList());
+        System.out.println("List of students whose rank is between 50 and 100 : "+rankWise);
+
+        //9- Find the average age of male and female students
+        Map<String,Double> avgAgeByGender = practice.list.stream().collect(Collectors.groupingBy(Student::getGender,
+                Collectors.averagingInt(Student::getAge)));
+        avgAgeByGender.forEach((gender,avgAge) -> System.out.println("Gender: "+gender+" Avg Age: "+avgAge));
+
+
+        //10- Find the department who is having maximum number of students
+
+        String deptWithMaxEmp = practice.list.stream().collect(Collectors.groupingBy(Student::getDepartmantName,Collectors.counting()))
+                .entrySet().stream().max(Comparator.comparing(Map.Entry::getValue)).get().getKey();
+//        Entry<String, Long> entry = list.stream()
+//                .collect(Collectors.groupingBy(Student::getDepartmantName, Collectors.counting())).entrySet().stream()
+//                .max(Map.Entry.comparingByValue()).get();
+        System.out.println("Department having maximum number of students : "+entry);
+
+        System.out.println("deptWithMaxEmp : "+deptWithMaxEmp);
+
+        //TODO Practice below
+        /**
+         * 11- Find the Students who stays in Delhi and sort them by their names
+         * List<Student> lstDelhistudent = list.stream().filter(dt -> dt.getCity().equals("Delhi"))
+         *     .sorted(Comparator.comparing(Student::getFirstName)).collect(Collectors.toList());
+         * System.out.println("List of students who stays in Delhi and sort them by their names : "+lstDelhistudent);
+         * 12- Find the average rank in all departments
+         * Map<String, Double> collect = list.stream()
+         *     .collect(Collectors.groupingBy(Student::getDepartmantName, Collectors.averagingInt(Student::getRank)));
+         * System.out.println("Average rank in all departments  : "+collect);
+         * 13- Find the highest rank in each department
+         * Map<String, Optional<Student>> studentData = list.stream().collect(Collectors.groupingBy(Student::getDepartmantName,
+         *     Collectors.minBy(Comparator.comparing(Student::getRank))));
+         * System.out.println("Highest rank in each department  : "+studentData);
+         * 14- Find the list of students and sort them by their rank
+         * List<Student> stuRankSorted = list.stream().sorted(Comparator.comparing(Student::getRank))
+         *     .collect(Collectors.toList());
+         * System.out.println("List of students sorted by their rank  : "+stuRankSorted);
+         * 15- Find the student who has second rank
+         * Student student = list.stream().sorted(Comparator.comparing(Student::getRank)).skip(1).findFirst().get();
+         * System.out.println("Second highest rank student  : "+student);
+         *
+         *
+         *
+         */
+
+
 
     }
 
@@ -308,7 +363,7 @@ class Student {
      */
     @Override
     public String toString() {
-        return "Employee [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", age=" + age
+        return "Student [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", age=" + age
                 + ", gender=" + gender + ", departmantName=" + departmantName + ", joinedYear=" + joinedYear + ", city="
                 + city + ", rank=" + rank + "]";
     }
