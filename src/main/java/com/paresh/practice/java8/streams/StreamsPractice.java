@@ -124,38 +124,14 @@ public class StreamsPractice {
         //15- Find the student who has second rank
         practice.list.stream().sorted(Comparator.comparingInt(Student::getRank)).skip(1).findFirst().get();
 
+        //Flat map
+        List<List<Integer>> nestedNumbers = Arrays.asList(Arrays.asList(1, 2, 3),
+                Arrays.asList(4, 5, 6));
+        List<Integer> flattenedList = nestedNumbers.stream().flatMap(Collection::stream).collect(Collectors.toList());
 
-        //TODO Practice below
-        /**
-         *
-         * how to get stream ??
-         *    ->  Stream.of("sd","sdsd");
-         *    ->  list.stream();
-         *      int[] arr = {1,2,3};
-         *    ->     Arrays.stream(arr);
-         * Collectors
-         * COmparator
-         * .collect() returns collection
-         * Collectors.goupingBy(classifier,collector)
-         *
-         * skip - skip first n element
-         * limit - limit to n emements
-         * distinct
-         *
-         *
-         *
-         *What is the difference between map and flatMap?
-
-         flatMap: Used for transforming each element into a Stream and then flattening the result into a single Stream.
-
-         map: Transforms each element of the stream into another object. The output is a Stream of the same size
-
-         map: Transforms each element of the stream into another object. The output is a Stream of the same size
-map: Transforms each element of the stream into another object. The output is a Stream of the same size
-         
-         */
-
-
+        //1. Find the employee with the highest salary:
+        Student studHi = practice.list.stream().
+                max(Comparator.comparingInt(Student::getAge)).orElse(null);
 
     }
 
