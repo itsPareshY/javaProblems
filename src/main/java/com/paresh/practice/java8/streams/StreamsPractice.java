@@ -2,6 +2,7 @@ package com.paresh.practice.java8.streams;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class StreamsPractice {
 
@@ -61,7 +62,7 @@ public class StreamsPractice {
          Student maxAgeStud = practice.list.stream().max(Comparator.comparing(Student::getAge)).orElseThrow(Exception::new);
         maxAgeStud.getAge();
 
-         OptionalInt maxAge = practice.list.stream().mapToInt(stud -> stud.getAge()).max();
+         OptionalInt maxAge = practice.list.stream().mapToInt(Student::getAge).max();
          //practice.list.stream().
 
         //7.  Find all departments names
@@ -98,31 +99,49 @@ public class StreamsPractice {
 //        Entry<String, Long> entry = list.stream()
 //                .collect(Collectors.groupingBy(Student::getDepartmantName, Collectors.counting())).entrySet().stream()
 //                .max(Map.Entry.comparingByValue()).get();
-        System.out.println("Department having maximum number of students : "+entry);
+//        System.out.println("Department having maximum number of students : "+entry);
 
         System.out.println("deptWithMaxEmp : "+deptWithMaxEmp);
 
+        //11- Find the Students who stays in Delhi and sort them by their names
+        practice.list.stream().filter(student -> "Delhi".equalsIgnoreCase(student.getCity()))
+                .sorted(Comparator.comparing(Student::getFirstName)).collect(Collectors.toList());
+
+        //12- Find the average rank in all departments
+        Map<String,Double> deptrank = practice.list.stream().collect(Collectors.groupingBy(Student::getDepartmantName,
+        Collectors.averagingInt(Student::getRank)));
+
+        //13- Find the highest rank in each department
+        Map<String ,Optional<Student>> rakDept = practice.list.stream().collect(Collectors.groupingBy(Student::getDepartmantName,
+                        Collectors.minBy(Comparator.comparingInt(Student::getRank))));
+                //if rank is ascending minby if rank is descending maxby
+
+        Stream.of("sd","sdsd");
+
+        //14- Find the list of students and sort them by their rank
+        practice.list.stream().sorted(Comparator.comparingInt(Student::getRank)).collect(Collectors.toList());
+
+        //15- Find the student who has second rank
+        practice.list.stream().sorted(Comparator.comparingInt(Student::getRank)).skip(1).findFirst().get();
+
+
         //TODO Practice below
         /**
-         * 11- Find the Students who stays in Delhi and sort them by their names
-         * List<Student> lstDelhistudent = list.stream().filter(dt -> dt.getCity().equals("Delhi"))
-         *     .sorted(Comparator.comparing(Student::getFirstName)).collect(Collectors.toList());
-         * System.out.println("List of students who stays in Delhi and sort them by their names : "+lstDelhistudent);
-         * 12- Find the average rank in all departments
-         * Map<String, Double> collect = list.stream()
-         *     .collect(Collectors.groupingBy(Student::getDepartmantName, Collectors.averagingInt(Student::getRank)));
-         * System.out.println("Average rank in all departments  : "+collect);
-         * 13- Find the highest rank in each department
-         * Map<String, Optional<Student>> studentData = list.stream().collect(Collectors.groupingBy(Student::getDepartmantName,
-         *     Collectors.minBy(Comparator.comparing(Student::getRank))));
-         * System.out.println("Highest rank in each department  : "+studentData);
-         * 14- Find the list of students and sort them by their rank
-         * List<Student> stuRankSorted = list.stream().sorted(Comparator.comparing(Student::getRank))
-         *     .collect(Collectors.toList());
-         * System.out.println("List of students sorted by their rank  : "+stuRankSorted);
-         * 15- Find the student who has second rank
-         * Student student = list.stream().sorted(Comparator.comparing(Student::getRank)).skip(1).findFirst().get();
-         * System.out.println("Second highest rank student  : "+student);
+         *
+         * how to get stream ??
+         *    ->  Stream.of("sd","sdsd");
+         *    ->  list.stream();
+         *      int[] arr = {1,2,3};
+         *    ->     Arrays.stream(arr);
+         * Collectors
+         * COmparator
+         * .collect() returns collection
+         * Collectors.goupingBy(classifier,collector)
+         *
+         * skip - skip first n element
+         * limit - limit to n emements
+         * distinct
+         *
          *
          *
          *
