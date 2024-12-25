@@ -77,6 +77,31 @@ public class LinkedListSelfPractice {
         }
     }
 
+    public void addAtPos(int pos , int data){
+        if (null == head){
+            System.out.println("List is empty, cannot add at pos " + pos);
+        } else {
+            Node current = head;
+            Node previous = null;
+            int i = 1;
+            while(i < pos) {
+                previous = current;
+                current = current.next;
+                i++;
+            }
+            Node newNode = new Node(data);
+            if(previous == null) {
+                newNode.next = current;
+                head = newNode;
+            }
+            else {
+                previous.next = newNode;
+                newNode.next = current;
+            }
+
+        }
+    }
+
     //print linked list
 
     /**
@@ -117,5 +142,12 @@ public class LinkedListSelfPractice {
         linkList.delete(4);
         linkList.print();
         linkList.delete(2);
+        linkList.addAtPos(5 , 10);
+        linkList.append(10);
+        linkList.print();
+        linkList.addAtPos(1,20);
+        linkList.print();
+        linkList.addAtPos(2,30);
+        linkList.print();
     }
 }
