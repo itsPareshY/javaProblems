@@ -1,7 +1,9 @@
 package com.paresh.practice.java8.streams;
 
 import java.util.*;
+import java.util.concurrent.ForkJoinPool;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class StreamsPractice {
@@ -58,11 +60,31 @@ public class StreamsPractice {
          * groupingByConcurrent(Function, Supplier, Collector)
          */
 
+//Custom Fork Join pool to allocate threads for parallel stream****************
+
+        ForkJoinPool customPool = new ForkJoinPool(4);
+
+        List<Integer> numbers = IntStream.range(0, 10)
+                .boxed()
+                .collect(Collectors.toList());
+
+        // Submit the parallel stream to the custom pool
+        customPool.submit(() ->
+                numbers.parallelStream()
+                        .map(number -> number * number)  // Square each number
+                        .forEach(System.out::println)    // Print the result
+        ).join();  // Wait for the task to complete
+
+        customPool.shutdown();  // Shutdown the pool after use
+
+// Custom Thread pool example end***********************************************
+
+
         //6. Find the max age of student
-         Student maxAgeStud = practice.list.stream().max(Comparator.comparing(Student::getAge)).orElseThrow(Exception::new);
+        Student maxAgeStud = practice.list.stream().max(Comparator.comparing(Student::getAge)).orElseThrow(Exception::new);
         maxAgeStud.getAge();
 
-         OptionalInt maxAge = practice.list.stream().mapToInt(Student::getAge).max();
+        OptionalInt maxAge = practice.list.stream().mapToInt(Student::getAge).max();
          //practice.list.stream().
 
         //7.  Find all departments names
