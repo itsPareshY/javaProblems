@@ -26,6 +26,8 @@ public class StringListStream {
                 + value));
 
         //4. Map strings to their lengths:
+        //  Function.identity() ->> good to remember
+        strings.stream().collect(Collectors.toMap(s -> s , String::length));
         Map<String, Integer> stringLengths = strings.stream()
                 .collect(Collectors.toMap(Function.identity(), String::length));
         stringLengths.forEach((key,val)-> System.out.println(key + " "

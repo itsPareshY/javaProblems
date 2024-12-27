@@ -1,12 +1,12 @@
 package com.paresh.practice.data.structure;
 
-public class LinkedListSelfPractice {
+public class LinkedListSelfPractice<D> {
 
-    static class Node {
-        int data;
+    static class Node<D> {
+        D data;
         Node next;
 
-        public Node(int data){
+        public Node(D data){
             this.data = data;
             this.next = null;
         }
@@ -21,7 +21,7 @@ public class LinkedListSelfPractice {
     }
 
     //add at end
-    public void append(int data){
+    public void append(D data){
         Node newNode = new Node(data);
         if(head == null){
             head = newNode;
@@ -37,14 +37,14 @@ public class LinkedListSelfPractice {
 
     //add at  beginning
     //no need to check head is null just create new node and newnode.next = head
-    public void prepend(int data){
+    public void prepend(D data){
         Node newNode = new Node(data);
         newNode.next = head;
         head = newNode;
     }
 
     //delete node
-    public void delete (int data){
+    public void delete (D data){
         if (null == head){
             System.out.println("List is empty, cannot delete");
         }
@@ -77,7 +77,7 @@ public class LinkedListSelfPractice {
         }
     }
 
-    public void addAtPos(int pos , int data){
+    public void addAtPos(int pos , D data){
         if (null == head){
             System.out.println("List is empty, cannot add at pos " + pos);
         } else {
@@ -126,7 +126,7 @@ public class LinkedListSelfPractice {
         }
     }
     public static void main(String ... args){
-        LinkedListSelfPractice linkList = new LinkedListSelfPractice();
+        LinkedListSelfPractice<Integer> linkList = new LinkedListSelfPractice<>();
         linkList.append(3);
         linkList.prepend(2);
         linkList.append(4);
