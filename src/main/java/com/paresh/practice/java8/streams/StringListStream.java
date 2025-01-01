@@ -112,5 +112,7 @@ public class StringListStream {
                 .sorted(Comparator.comparingInt(Student::getRank).reversed())
                 .limit(3)
                 .collect(Collectors.toList());
+
+        List<String> st = new StreamsPractice().list.stream().sorted(Comparator.comparingInt(Student::getAge).thenComparing(Student::getCity)).map(Student::getCity).collect(Collectors.toList());
     }
 }
