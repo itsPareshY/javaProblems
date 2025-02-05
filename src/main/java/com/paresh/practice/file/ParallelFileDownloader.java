@@ -21,6 +21,8 @@ public class ParallelFileDownloader {
     private static final String TEMP_SUFFIX = ".part"; // Suffix for temporary part files
 
     public static void main(String[] args) throws MalformedURLException {
+        long startTime = System.currentTimeMillis();
+        long startTimeSeconds = System.nanoTime();
         // Check if at least the file URL and destination file name are provided
         if (args.length < 2) {
             System.out.println("Usage: java ParallelFileDownloader <file-url> <destination-file-name> [<max-retries> <retry-delay-ms> <retry-whole-file>]");
@@ -45,6 +47,13 @@ public class ParallelFileDownloader {
             System.out.println("Invalid arguments for retries or delay, using default values.");
             processDownload(fileUrl, destinationFile, false);
         }
+        // Calculate the total time taken for the download
+        long endTime = System.currentTimeMillis();
+        long endTimeSeconds = System.nanoTime();
+        long duration = endTime - startTime;
+        long durationSeconds = endTimeSeconds - startTimeSeconds;
+        System.out.println("Total time taken: " + duration + " ms");
+        System.out.println("Total time taken in seconds: " + durationSeconds / 1_000_000_000 + " s");
     }
 
     // Method to handle the download process
@@ -82,6 +91,9 @@ public class ParallelFileDownloader {
         if (fileUrl.startsWith("http://") || fileUrl.startsWith("https://")) {
             HttpURLConnection connection = (HttpURLConnection) new URL(fileUrl).openConnection();
             connection.setRequestMethod("HEAD");
+            connection.setRequestProperty("User-Agent", "Mozilla/5.0");
+            connection.setRequestProperty("Connection", "keep-alive");
+            connection.setRequestProperty("Accept-Encoding", "gzip, deflate");
             connection.connect();
             return connection.getContentLengthLong();
         } else if (fileUrl.startsWith("file://")) {
@@ -237,6 +249,9 @@ public class ParallelFileDownloader {
         // Method to download a chunk of the file
         private void downloadChunk(String fileUrl, String destinationFile, long startByte, long endByte, int partIndex) throws IOException {
             HttpURLConnection connection = (HttpURLConnection) new URL(fileUrl).openConnection();
+            connection.setRequestProperty("User-Agent", "Mozilla/5.0");
+            connection.setRequestProperty("Connection", "keep-alive");
+            connection.setRequestProperty("Accept-Encoding", "gzip, deflate");
             connection.setRequestProperty("Range", "bytes=" + startByte + "-" + endByte); // Range header for partial download
             connection.connect();
 
