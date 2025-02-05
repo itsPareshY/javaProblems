@@ -28,8 +28,9 @@ public class ParallelFileDownloader {
         }
 
         String fileUrl = args[0];  // File URL (web URL, file URL, or local file path)
-        String destinationFile = new File(new URL(fileUrl).getPath()).getName();  // Extract destination file name from URL
-
+        String destinationFileName = new File(new URL(fileUrl).getPath()).getName();  // Extract destination file name from URL
+        String downloadsFolder = System.getProperty("user.home") + File.separator + "Downloads";
+        String destinationFile = downloadsFolder + File.separator + destinationFileName;
         // Parse optional command-line arguments for retries, delay, and retry flag
         try {
             if (args.length >= 3) {
