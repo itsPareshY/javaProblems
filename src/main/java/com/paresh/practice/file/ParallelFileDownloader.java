@@ -20,7 +20,7 @@ public class ParallelFileDownloader {
     private static int RETRY_DELAY_MS = 5000; // Delay in milliseconds between retries
     private static final String TEMP_SUFFIX = ".part"; // Suffix for temporary part files
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws MalformedURLException {
         // Check if at least the file URL and destination file name are provided
         if (args.length < 2) {
             System.out.println("Usage: java ParallelFileDownloader <file-url> <destination-file-name> [<max-retries> <retry-delay-ms> <retry-whole-file>]");
@@ -28,17 +28,17 @@ public class ParallelFileDownloader {
         }
 
         String fileUrl = args[0];  // File URL (web URL, file URL, or local file path)
-        String destinationFile = args[1];  // Destination file name
+        String destinationFile = new File(new URL(fileUrl).getPath()).getName();  // Extract destination file name from URL
 
         // Parse optional command-line arguments for retries, delay, and retry flag
         try {
             if (args.length >= 3) {
-                MAX_RETRIES = Integer.parseInt(args[2]);  // Max retries per chunk
+                MAX_RETRIES = Integer.parseInt(args[1]);  // Max retries per chunk
             }
             if (args.length >= 4) {
-                RETRY_DELAY_MS = Integer.parseInt(args[3]);  // Retry delay in milliseconds
+                RETRY_DELAY_MS = Integer.parseInt(args[2]);  // Retry delay in milliseconds
             }
-            boolean retryEntireFile = args.length >= 5 && Boolean.parseBoolean(args[4]);  // Flag to retry whole file
+            boolean retryEntireFile = args.length >= 4 && Boolean.parseBoolean(args[3]);  // Flag to retry whole file
             processDownload(fileUrl, destinationFile, retryEntireFile);
         } catch (NumberFormatException e) {
             System.out.println("Invalid arguments for retries or delay, using default values.");
@@ -56,7 +56,7 @@ public class ParallelFileDownloader {
                 return;
             }
 
-            System.out.println("File size: " + fileSize + " bytes.");
+            System.out.println("File size: " + fileSize + " bytes (" + (fileSize / (1024 * 1024)) + " MB).");
 
             // Calculate the size of each chunk
             long chunkSize = fileSize / NUM_THREADS;
