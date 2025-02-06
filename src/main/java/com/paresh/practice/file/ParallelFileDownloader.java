@@ -134,6 +134,10 @@ public class ParallelFileDownloader {
 
     // Method to verify and resume download
     private static void verifyAndResumeDownload(String fileUrl, String destinationFile, long fileSize, long chunkSize) throws InterruptedException, IOException {
+        if(fileAlreadyExists(destinationFile, fileSize)){
+            System.out.println("File already exists and is complete.");
+            return;
+        }
         ExecutorService executorService = Executors.newFixedThreadPool(NUM_THREADS);
         List<DownloadTask> tasks = createDownloadTasks(fileUrl, destinationFile, fileSize, chunkSize);
 
@@ -163,6 +167,11 @@ public class ParallelFileDownloader {
         }
 
         executorService.shutdown();
+    }
+
+    private static boolean fileAlreadyExists(String destinationFile, long expectedFileSize) {
+        File downloadedFile = new File(destinationFile);
+        return downloadedFile.exists() && downloadedFile.length() == expectedFileSize;
     }
 
     // Method to check if a specific chunk is downloaded
