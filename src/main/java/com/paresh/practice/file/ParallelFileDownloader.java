@@ -10,7 +10,7 @@ import java.util.concurrent.*;
  * The file is split into chunks, each downloaded by a separate thread, and then merged into the final file.
  * The number of threads, max retries, and retry delay can be adjusted based on the network conditions.
  * The program can be run from the command line with the following arguments:
- * java ParallelFileDownloader <file-url> <destination-file-name> [<max-retries> <retry-delay-ms> <retry-whole-file>]
+ * java ParallelFileDownloader <file-url> <file-download-URL> [<max-retries> <retry-delay-ms> <retry-whole-file>]
  * java ParallelFileDownloader https://www.apache.org/dyn/closer.cgi?filename=activemq/activemq-artemis/2.39.0/apache-artemis-2.39.0-bin.zip&action=download mq1.zip 2 5 true
  *
  */
