@@ -29,6 +29,15 @@ public class ConnectedIsland {
         // Mark the current cell as visited by changing '1' to '0'
         arr[row][col] = 0;
 
+      /*
+      Simpler way to explore the four possible directions (up, down, left, right)
+      int[] rowOffsets = {-1, 1, 0, 0};
+        int[] colOffsets = {0, 0, -1, 1};
+
+        for (int i = 0; i < 4; i++) {
+            dfs(arr, row + rowOffsets[i], col + colOffsets[i], rowCount, colCount);
+        }
+      */
         // Explore the four possible directions (up, down, left, right)
         dfs(arr, row + 1, col, rowCount, colCount); // Down
         dfs(arr, row - 1, col, rowCount, colCount); // Up
