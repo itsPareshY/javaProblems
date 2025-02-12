@@ -1,6 +1,6 @@
 package com.paresh.practice.data.structure;
 
-public class SwitchNodes {
+public class RearrangeList {
 
     public static void main (String args[]){
     LinkedListSelfPractice<Integer> list = new LinkedListSelfPractice<>();
@@ -11,8 +11,10 @@ public class SwitchNodes {
     list.append(5);
     list.append(6);
     list.print();
-
-    //move last element to second position, 1 -> 6 -> 2 -> 5 -> 3 -> 4 -> null
+    //input list 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> null
+    //output rearrange list 1 -> 6 -> 2 -> 5 -> 3 -> 4 -> null
+    list.rearrangeList();
+    list.print();
 
 
     }
