@@ -33,7 +33,14 @@ public class MostFrequentElement {
         System.out.println();
         list.stream().collect(Collectors.groupingBy(item -> item, Collectors.counting()))
                 .entrySet().stream()
-                .sorted(Comparator.comparing(Map.Entry::getValue)) //TODO: Another way to sort
+                .sorted(Comparator.comparing(e ->  ((Map.Entry<Integer, Long>)e).getValue()).reversed()) //TODO: Another way to sort Descending
+                .limit(5)
+                .forEach(entry -> System.out.print(entry.getKey() + " "));
+
+        System.out.println();
+        list.stream().collect(Collectors.groupingBy(item -> item, Collectors.counting()))
+                .entrySet().stream()
+                .sorted(Comparator.comparing(Map.Entry::getValue)) //TODO: Another way to sort Ascending
                 .limit(5)
                 .forEach(entry -> System.out.print(entry.getKey() + " "));
     }
