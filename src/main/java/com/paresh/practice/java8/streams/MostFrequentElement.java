@@ -1,4 +1,4 @@
-package com.paresh.practice.array.problems;
+package com.paresh.practice.java8.streams;
 
 import java.util.ArrayList;
 import java.util.Comparator;
