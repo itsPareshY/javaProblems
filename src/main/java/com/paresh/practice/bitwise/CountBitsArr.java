@@ -17,6 +17,9 @@ public class CountBitsArr {
         return arr;
     }
 
+    //TODO to optimize time complexity may need to increase space complexity
+    // create byte array of 32  size and store the count of 1s for each number ??
+
     // Fixed Time Limit Exceeded issue by creating a copy of i and manipulating it within the while loop
     public int[] countBitsFixedTimeLimitErrorofAboveMethod(int n) {
         int[] arr = new int[n + 1];
