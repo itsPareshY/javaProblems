@@ -1,6 +1,8 @@
 package com.paresh.practice.bitwise;
 
 public class SwapBits {
+
+
     public static void main(String[] args) {
         long x = 73;
         System.out.println("Original number: " + x);
@@ -55,4 +57,40 @@ public class SwapBits {
     // << i Operator to create a mask with 1 at the i-th position
     // | Operator  to combine the two masks to create a single mask
     // ^ Operator to flip the bits at the i-th and j-th positions
+
+    //create bitwise operator table
+    // & Bitwise AND
+    // 0 & 0 = 0
+    // 0 & 1 = 0
+    // 1 & 0 = 0
+    // 1 & 1 = 1
+    // | Bitwise OR
+    // 0 | 0 = 0
+    // 0 | 1 = 1
+    // 1 | 0 = 1
+    // 1 | 1 = 1
+    // ^ Bitwise XOR
+    // 0 ^ 0 = 0
+    // 0 ^ 1 = 1
+    // 1 ^ 0 = 1
+    // 1 ^ 1 = 0
+    // ~ Bitwise NOT
+    // ~0 = 1
+    // ~1 = 0
+    // << Left Shift
+    // 1 << 1 = 10
+    // 1 << 2 = 100
+    // 1 << 3 = 1000
+    // >> Right Shift
+    // 1000 >> 1 = 100
+    // 1000 >> 2 = 10
+    // 1000 >> 3 = 1
+    // >>> Unsigned Right Shift
+    // 1000 >>> 1 = 0100
+    // 1000 >>> 2 = 0010
+    // 1000 >>> 3 = 0001
+    //When to us >>> operator in Java?
+    //The >>> operator is used to right shift the bits of a number.
+    // It fills the shifted positions with zeros.
+
 }
