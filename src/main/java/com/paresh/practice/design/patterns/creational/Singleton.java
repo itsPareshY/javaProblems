@@ -1,4 +1,4 @@
-package com.paresh.practice.design.patterns;
+package com.paresh.practice.design.patterns.creational;
 
 import java.io.Serializable;
 
