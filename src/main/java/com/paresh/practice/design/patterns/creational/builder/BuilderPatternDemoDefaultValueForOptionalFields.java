@@ -91,7 +91,7 @@ class DatabaseConnectionConfig {
 }
 
 
-public class BuilderPatternDemo {
+public class BuilderPatternDemoDefaultValueForOptionalFields {
     public static void main(String[] args) {
         // Create a DatabaseConnectionConfig using the builder
         DatabaseConnectionConfig config = new DatabaseConnectionConfig.DatabaseConnectionConfigBuilder("localhost", 3306)
