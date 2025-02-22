@@ -10,6 +10,12 @@ public class VehicleBuilderDemo {
         System.out.println("Engine: " + car.getEngine());
         System.out.println("Color: " + car.getColor());
 
+        Vehicle carWithoutColor = new Car.CarBuilder("V8 Engine")
+                .build();
+        System.out.println("Vehicle Type: " + carWithoutColor.getType());
+        System.out.println("Engine: " + carWithoutColor.getEngine());
+        System.out.println("Color: " + carWithoutColor.getColor());
+
         // Building a Bike with only engine type
         Vehicle bike = new Bike.BikeBuilder("250cc Engine")
                 .color("Black")  // Optional
