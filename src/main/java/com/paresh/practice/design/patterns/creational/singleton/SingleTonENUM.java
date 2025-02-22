@@ -1,4 +1,4 @@
-package com.paresh.practice.design.patterns.creational;
+package com.paresh.practice.design.patterns.creational.singleton;
 
 /**
  * @author https://www.linkedin.com/in/yadavparesh/

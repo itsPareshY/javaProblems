@@ -1,4 +1,4 @@
-package com.paresh.practice.design.patterns.creational;
+package com.paresh.practice.design.patterns.creational.telescopic.constructor;
 
 /**
  * Telescopic Constructors is a design pattern

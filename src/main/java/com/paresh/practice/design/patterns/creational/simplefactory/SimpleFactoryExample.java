@@ -1,4 +1,4 @@
-package com.paresh.practice.design.patterns.creational;
+package com.paresh.practice.design.patterns.creational.simplefactory;
 
 /**
  * @author https://www.linkedin.com/in/yadavparesh/
