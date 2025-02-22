@@ -21,12 +21,14 @@ public class Main {
         //Runnable task MyThread and AnotherThread only perform task and do not return any result
         //Thats why they implement Runnable with run method
         service.submit(new AnotherThread());
-        for (int i = 0; i < 10; i++) {
+        for (int i = 1; i <= 10; i++) {
             //MyCallable to submit task and get result
             Future<String> future = service.submit(new MyCallable(i));
             results.add(future);
         }
-        //My callable instance 8,9 complete last as they are submitted last as we submitted MyThread and AnotherThread first
+        // as we submitted MyThread and AnotherThread first (2 threads) and
+        // then 8 Threads used by first 8 MyCallable instances
+        // 2+8 = 10 threads used so 9th and 10th MyCallable instances will wait for any of the first 8 threads to complete
         for (Future<String> future : results) {
             try {
                 // future.get() ensures that the task is completed before we move forward
