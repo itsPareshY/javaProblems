@@ -96,7 +96,12 @@ public class ObserverPatternQueueExample {
 
         // Producer pushes messages to the queue
         producer.produceMessage("Message 1");
+        System.out.println("**********************************");
+        queue.removeMessageListener(consumer1);
         producer.produceMessage("Message 2");
+        System.out.println("Only consumer 2 will consume the message as we removed consumer 1");
+        System.out.println("**********************************");
+        queue.addMessageListener(consumer1);
         producer.produceMessage("Message 3");
     }
 }
