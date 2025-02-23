@@ -1,5 +1,9 @@
 package com.paresh.practice.mutithreading.executorservice;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+
 public class ClassicThreadStarting {
 
     public static void main(String[] args) throws Exception {
@@ -17,10 +21,21 @@ public class ClassicThreadStarting {
         thread.start();
 
         // Create a thread using Callable interface
-        MyCallable myCallable = new MyCallable(1);
-        String resultFromCallable = myCallable.call();
+        // Callable Tasks cannot be started using Thread class
+        // We need to use ExecutorService to start a Callable Task
+        // If we invoke call() method directly, it will run in the same thread
+        ExecutorService executorService = Executors.newSingleThreadExecutor();
+        MyCallableTask myCallableTask = new MyCallableTask(1);
+        Future<String> result = executorService.submit(myCallableTask);
+        String resultFromCallable = result.get();
+        executorService.shutdown();
+        // WE use Future to get the result of a task
+        // Future.get() method waits for the task to complete before moving forward
         System.out.println(resultFromCallable);
+        // Main thread complete but myrunnableTask and myCallableTask keep running
+        // the program will not exit until all the threads are done
 
+        System.out.println("Main thread is done");
         // Above we created a thread using Thread class, Runnable interface and Callable interface
         // All of them are running in parallel
         // Threads start running in parallel as soon as we call start() method

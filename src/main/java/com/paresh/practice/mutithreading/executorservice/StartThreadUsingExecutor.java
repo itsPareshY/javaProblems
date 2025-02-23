@@ -23,7 +23,7 @@ public class StartThreadUsingExecutor {
         service.submit(new MyThread());
         for (int i = 1; i <= 10; i++) {
             //MyCallable to submit task and get result
-            Future<String> future = service.submit(new MyCallable(i));
+            Future<String> future = service.submit(new MyCallableTask(i));
             results.add(future);
         }
         // as we submitted MyThread and AnotherThread first (2 threads) and

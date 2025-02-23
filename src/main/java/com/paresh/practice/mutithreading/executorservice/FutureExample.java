@@ -12,9 +12,9 @@ public class FutureExample {
      * @param args
      */
     public static void main(String ... args){
-        MyCallable myCallable = new MyCallable(1);
+        MyCallableTask myCallableTask = new MyCallableTask(1);
         ExecutorService executorService = Executors.newSingleThreadExecutor();
-        Future<String> future = executorService.submit(myCallable);
+        Future<String> future = executorService.submit(myCallableTask);
         try {
             System.out.println(future.get());
         } catch (Exception e) {

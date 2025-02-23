@@ -8,6 +8,7 @@ public class DaemonThreadExample {
         deamonThread.setDaemon(true);
         deamonThread.start();
         // Main thread will not wait for the daemon thread to complete
+        //Program will exit as soon as the main thread is done but the daemon thread will keep running
         System.out.println("Main thread is done");
         // If we do not set the thread as daemon, main thread will wait for the thread to complete
         // Does deamon thread keep running even after main thread is done?

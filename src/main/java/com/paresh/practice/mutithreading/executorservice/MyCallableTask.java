@@ -3,7 +3,7 @@ package com.paresh.practice.mutithreading.executorservice;
 import java.util.concurrent.Callable;
 
 //Implementing Callable interface to create a task that returns a result
-public class MyCallable implements Callable<String> {
+public class MyCallableTask implements Callable<String> {
 
     int instance ;
 
@@ -11,7 +11,7 @@ public class MyCallable implements Callable<String> {
         return instance;
     }
 
-    public MyCallable(int instance) {
+    public MyCallableTask(int instance) {
         this.instance = instance;
     }
 
@@ -19,7 +19,7 @@ public class MyCallable implements Callable<String> {
     public String call() throws Exception {
         //Do some work
         for (int i = 1; i <= 500; i++) {
-            System.out.println(" MyCallable " + instance + " is running at : " + i + " " + Thread.currentThread().getName());
+            System.out.println(" MyCallableTask " + instance + " is running at : " + i + " " + Thread.currentThread().getName());
             try {
                 Thread.sleep(10);
             }
