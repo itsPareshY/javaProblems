@@ -5,7 +5,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
-public class Main {
+public class StartThreadUsingExecutor {
     public static void main(String[] args) {
         ArrayList<Future<String>> results = new ArrayList<>();
         //Submit n tasks to the executor service with n threads in pool
@@ -17,10 +17,10 @@ public class Main {
 
         // 1 submit uses 1 thread
         // atmost 2 threads will be used as we submit only 2 tasks even if we have 10 threads in pool
-        service.submit(new MyThread());
-        //Runnable task MyThread and AnotherThread only perform task and do not return any result
+        service.submit(new MyRunnable());
+        //Runnable task MyRunnable and Extended Thread MyThread only perform task and do not return any result
         //Thats why they implement Runnable with run method
-        service.submit(new AnotherThread());
+        service.submit(new MyThread());
         for (int i = 1; i <= 10; i++) {
             //MyCallable to submit task and get result
             Future<String> future = service.submit(new MyCallable(i));

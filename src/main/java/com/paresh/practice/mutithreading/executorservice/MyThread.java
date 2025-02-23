@@ -1,6 +1,6 @@
 package com.paresh.practice.mutithreading.executorservice;
 
-public class MyThread implements Runnable {
+public class MyThread extends Thread {
 
     @Override
     public void run() {
