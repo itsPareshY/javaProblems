@@ -1,4 +1,4 @@
-package com.paresh.practice.design.patterns.behavioral.observor;
+package com.paresh.practice.design.patterns.behavioral.observor.queueapp;
 
 import java.util.*;
 
