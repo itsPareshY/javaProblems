@@ -7,8 +7,17 @@ interface MessageListener {
     void onMessageReceived(String message);
 }
 
+interface MessageQueue {
+    void addMessageListener(MessageListener listener);  // Method to register an observer
+    void removeMessageListener(MessageListener listener);  // Method to remove an observer
+    void pushMessage(String message);  // Method to push a message to the queue and notify observers
+    boolean hasMessages();  // Check if there are messages in the queue
+    String getMessage();  // Retrieve and remove a message from the queue
+}
+
+
 // Subject class (Queue)
-class ObservableQueue {
+class ObservableQueue implements MessageQueue {
     private List<MessageListener> listeners = new ArrayList<>(); // List of observers
     private Queue<String> queue = new LinkedList<>(); // Internal queue to hold messages
 
