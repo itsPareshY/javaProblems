@@ -51,22 +51,22 @@ class Rectangle implements Shape {
 }
 
 
-abstract class ShapeFactory {
+interface ShapeFactory {
     // Factory Method
-    abstract Shape createShape();
+ Shape createShape();
 }
 
 
-class CircleFactory extends ShapeFactory {
+class CircleFactory implements ShapeFactory {
     @Override
-    Shape createShape() {
+    public Shape createShape() {
         return new Circle();  // Return a Circle object
     }
 }
 
-class RectangleFactory extends ShapeFactory {
+class RectangleFactory implements ShapeFactory {
     @Override
-    Shape createShape() {
+    public Shape createShape() {
         return new Rectangle();  // Return a Rectangle object
     }
 }
