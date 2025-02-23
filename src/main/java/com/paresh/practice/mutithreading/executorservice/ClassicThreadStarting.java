@@ -11,6 +11,8 @@ public class ClassicThreadStarting {
         // Create a thread using Runnable interface
         MyRunnable myRunnable = new MyRunnable();
         Thread thread = new Thread(myRunnable);
+        // thread.run(); // this will not start a new thread, it will run in the same thread
+        // DO not call run() method, call start() method to start a new thread
         thread.start();
 
         // Create a thread using Callable interface
