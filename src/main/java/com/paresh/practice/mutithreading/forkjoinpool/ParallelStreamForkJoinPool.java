@@ -1,4 +1,4 @@
-package com.paresh.practice.mutithreading.forkjoin;
+package com.paresh.practice.mutithreading.forkjoinpool;
 
 import java.util.List;
 import java.util.concurrent.ForkJoinPool;
@@ -14,7 +14,7 @@ import java.util.stream.IntStream;
  *
  *     although for better control use custom forkjoinpool with parallel streams
  */
-public class ParallelStreamForkJoin {
+public class ParallelStreamForkJoinPool {
 
     public static void main(String[] args) {
         // Create a custom ForkJoinPool with 4 threads
@@ -29,7 +29,7 @@ public class ParallelStreamForkJoin {
         customPool.submit(() ->
                 numbers.parallelStream()
                         .map(number -> number * number)  // Square each number
-                        .forEach(ParallelStreamForkJoin::printWithThreadName)    // Print the result
+                        .forEach(ParallelStreamForkJoinPool::printWithThreadName)    // Print the result
         ).join();  // Wait for the task to complete
 
         customPool.shutdown();  // Shutdown the pool after use
