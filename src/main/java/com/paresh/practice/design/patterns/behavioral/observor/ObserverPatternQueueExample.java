@@ -1,4 +1,4 @@
-package com.paresh.practice.design.patterns.behavioral;
+package com.paresh.practice.design.patterns.behavioral.observor;
 
 import java.util.*;
 
