@@ -17,7 +17,7 @@ public class StartThreadUsingExecutor {
 
         // 1 submit uses 1 thread
         // atmost 2 threads will be used as we submit only 2 tasks even if we have 10 threads in pool
-        service.submit(new MyRunnable());
+        service.submit(new MyRunnableTask());
         //Runnable task MyRunnable and Extended Thread MyThread only perform task and do not return any result
         //Thats why they implement Runnable with run method
         service.submit(new MyThread());

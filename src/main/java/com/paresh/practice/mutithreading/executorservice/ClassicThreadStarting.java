@@ -9,8 +9,9 @@ public class ClassicThreadStarting {
         myThread.join(); // this will cause the program to wait for myThread to complete before moving forward
 
         // Create a thread using Runnable interface
-        MyRunnable myRunnable = new MyRunnable();
-        Thread thread = new Thread(myRunnable);
+        MyRunnableTask myRunnableTask = new MyRunnableTask();
+        //Supplying Runnable to Thread class
+        Thread thread = new Thread(myRunnableTask);
         // thread.run(); // this will not start a new thread, it will run in the same thread
         // DO not call run() method, call start() method to start a new thread
         thread.start();
