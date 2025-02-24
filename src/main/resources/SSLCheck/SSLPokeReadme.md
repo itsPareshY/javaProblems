@@ -9,16 +9,16 @@ java -Djavax.net.ssl.trustStore=truststore.jks -Djavax.net.ssl.trustStorePasswor
 
 <H1>KeyTool Help:</H1>
 ```java
-keytool -list -keystore bil-optima.jceks -storetype jceks -storepass optima
+keytool -list -keystore bil-my.jceks -storetype jceks -storepass my
 
 keytool -v -list -keystore truststore.jks
 
-keytool -delete -alias optima-blf-server -keystore truststore.jks  
-keytool -delete -alias optima-blf-server -keystore truststore.jks -storepass secret
+keytool -delete -alias my-blf-server -keystore truststore.jks  
+keytool -delete -alias my-blf-server -keystore truststore.jks -storepass secret
 
-keytool -importcert -file optima-blf-server.crt -alias optima-blf-server -keystore truststore.jks -storepass secret -keypass secret -noprompt
+keytool -importcert -file my-blf-server.crt -alias my-blf-server -keystore truststore.jks -storepass secret -keypass secret -noprompt
 
-java -Djavax.net.ssl.trustStore=truststore.jks SSLPoke optima-blf-server 8443
+java -Djavax.net.ssl.trustStore=truststore.jks SSLPoke my-blf-server 8443
 ```
 
 
