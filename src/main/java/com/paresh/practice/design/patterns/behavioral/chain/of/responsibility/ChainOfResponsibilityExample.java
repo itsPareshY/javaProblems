@@ -1,4 +1,4 @@
-package com.paresh.practice.design.patterns.behavioral.observor.chainof.responibility.example.with.strategy;
+package com.paresh.practice.design.patterns.behavioral.chain.of.responsibility;
 
 // Define the Strategy interface for canProcess decision
 interface CanProcessStrategy {
