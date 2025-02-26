@@ -1,4 +1,6 @@
-package com.paresh.practice.mutithreading.executorservice;
+package com.paresh.practice.mutithreading.classic;
+
+import com.paresh.practice.mutithreading.executorservice.MyCallableTask;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

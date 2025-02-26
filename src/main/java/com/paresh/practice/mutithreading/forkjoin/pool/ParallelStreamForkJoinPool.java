@@ -1,4 +1,4 @@
-package com.paresh.practice.mutithreading.forkjoinpool;
+package com.paresh.practice.mutithreading.forkjoin.pool;
 
 import java.util.List;
 import java.util.concurrent.ForkJoinPool;

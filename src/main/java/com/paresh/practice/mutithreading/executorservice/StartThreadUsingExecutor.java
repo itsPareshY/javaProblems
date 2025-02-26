@@ -1,5 +1,8 @@
 package com.paresh.practice.mutithreading.executorservice;
 
+import com.paresh.practice.mutithreading.classic.MyRunnableTask;
+import com.paresh.practice.mutithreading.classic.MyThread;
+
 import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

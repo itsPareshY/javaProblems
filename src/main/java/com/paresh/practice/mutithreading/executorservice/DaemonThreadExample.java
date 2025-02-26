@@ -1,5 +1,7 @@
 package com.paresh.practice.mutithreading.executorservice;
 
+import com.paresh.practice.mutithreading.classic.MyRunnableTask;
+
 public class DaemonThreadExample {
 
     public static void main(String ... args){
