@@ -1,0 +1,194 @@
+@startuml
+
+/' diagram meta data start
+config=CallConfiguration;
+{
+  "rootMethod": "com.paresh.practice.design.patterns.behavioral.command.pattern.Command#execute()",
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": true,
+    "cutInterfaceStructures": true,
+    "cutDataStructures": true,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 3,
+    "backwardDepth": 3,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showMethodParametersTypes": false,
+    "showMethodParametersNames": false,
+    "showMethodReturnType": false,
+    "showPackageLevels": 2,
+    "showCallOrder": false,
+    "edgeMode": "MethodsOnly", // TypesOnly, MethodsOnly, TypesAndMethods, MethodsAndDirectTypeUsage
+    "showDetailedClassStructure": false
+  },
+  "rootClass": "com.paresh.practice.design.patterns.behavioral.command.pattern.Command",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="LR"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_995423943 { 
+   	label=paresh
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   subgraph cluster_1785808304 { 
+   	label=practice
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   subgraph cluster_1062938571 { 
+   	label=RemoteControl
+	labeljust=l
+	fillcolor=white
+	style=filled
+   
+   RemoteControl1485747874XXXbuttonPressed0[
+	label="+ buttonPressed()"
+	style=filled
+	fillcolor=white
+	tooltip="RemoteControl
+
+null"
+	fontcolor=darkgreen
+];
+} 
+
+subgraph cluster_1254359805 { 
+   	label=RemoteControlTest
+	labeljust=l
+	fillcolor=white
+	style=filled
+   
+   RemoteControlTest1485747874XXXmain1859653459[
+	label="+ main()"
+	style=filled
+	fillcolor=white
+	tooltip="RemoteControlTest
+
+null"
+	fontcolor=darkgreen
+];
+} 
+
+subgraph cluster_1329666390 { 
+   	label=Light
+	labeljust=l
+	fillcolor=white
+	style=filled
+   
+   Light1485747874XXXswitchOn0[
+	label="+ switchOn()"
+	style=filled
+	fillcolor=white
+	tooltip="Light
+
+null"
+	fontcolor=darkgreen
+];
+} 
+
+subgraph cluster_1424262177 { 
+   	label=Command
+	labeljust=l
+	fillcolor=white
+	style=filled
+   
+   Command1485747874XXXexecute0[
+	label="+ execute()"
+	style=filled
+	fillcolor=white
+	tooltip="Command
+
+null"
+	penwidth=4
+	fontcolor=darkgreen
+];
+} 
+
+subgraph cluster_2032597218 { 
+   	label=LightOnCommand
+	labeljust=l
+	fillcolor=white
+	style=filled
+   
+   LightOnCommand1485747874XXXexecute0[
+	label="+ execute()"
+	style=filled
+	fillcolor=white
+	tooltip="LightOnCommand
+
+null"
+	fontcolor=darkgreen
+];
+} 
+} 
+} 
+
+'edges    
+Command1485747874XXXexecute0 -> LightOnCommand1485747874XXXexecute0;
+LightOnCommand1485747874XXXexecute0 -> Light1485747874XXXswitchOn0;
+RemoteControl1485747874XXXbuttonPressed0 -> Command1485747874XXXexecute0;
+RemoteControlTest1485747874XXXmain1859653459 -> RemoteControl1485747874XXXbuttonPressed0;
+    
+}
+@enduml
