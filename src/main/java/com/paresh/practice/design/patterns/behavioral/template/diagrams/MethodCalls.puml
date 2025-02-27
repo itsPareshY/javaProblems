@@ -1,0 +1,243 @@
+@startuml
+
+/' diagram meta data start
+config=CallConfiguration;
+{
+  "rootMethod": "com.paresh.practice.design.patterns.behavioral.template.ConnectorTemplate#run()",
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": true,
+    "cutInterfaceStructures": true,
+    "cutDataStructures": true,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 3,
+    "backwardDepth": 3,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showMethodParametersTypes": false,
+    "showMethodParametersNames": false,
+    "showMethodReturnType": false,
+    "showPackageLevels": 2,
+    "showCallOrder": false,
+    "edgeMode": "MethodsOnly", // TypesOnly, MethodsOnly, TypesAndMethods, MethodsAndDirectTypeUsage
+    "showDetailedClassStructure": false
+  },
+  "rootClass": "com.paresh.practice.design.patterns.behavioral.template.ConnectorTemplate",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="LR"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_995423943 { 
+   	label=paresh
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   subgraph cluster_1785808304 { 
+   	label=practice
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   subgraph cluster_1363800724 { 
+   	label=Client
+	labeljust=l
+	fillcolor=white
+	style=filled
+   
+   Client1884383077XXXmain1859653459[
+	label="+ main()"
+	style=filled
+	fillcolor=white
+	tooltip="Client
+
+null"
+	fontcolor=darkgreen
+];
+} 
+
+subgraph cluster_1861158970 { 
+   	label=OracleConnector
+	labeljust=l
+	fillcolor=white
+	style=filled
+   
+   OracleConnector1884383077XXXprocessResult0[
+	label="+ processResult()"
+	style=filled
+	fillcolor=white
+	tooltip="OracleConnector
+
+&#10;  Abstract method to be implemented by subclasses to process the result of the query.&#10; "
+	fontcolor=darkgreen
+];
+} 
+
+subgraph cluster_555457612 { 
+   	label=MySqlConnector
+	labeljust=l
+	fillcolor=white
+	style=filled
+   
+   MySqlConnector1884383077XXXpostProcessHook0[
+	label="+ postProcessHook()"
+	style=filled
+	fillcolor=white
+	tooltip="MySqlConnector
+
+&#10;  Hook method for post-processing.&#10;  This method can be overridden by subclasses to add additional behavior after processing the result.&#10; "
+	fontcolor=darkgreen
+];
+
+MySqlConnector1884383077XXXprocessResult0[
+	label="+ processResult()"
+	style=filled
+	fillcolor=white
+	tooltip="MySqlConnector
+
+&#10;  Abstract method to be implemented by subclasses to process the result of the query.&#10; "
+	fontcolor=darkgreen
+];
+} 
+
+subgraph cluster_680108414 { 
+   	label=ConnectorTemplate
+	labeljust=l
+	fillcolor=white
+	style=filled
+   
+   ConnectorTemplate1884383077XXXclose0[
+	label="+ close()"
+	style=filled
+	fillcolor=white
+	tooltip="ConnectorTemplate
+
+&#10;  Closes the connection.&#10;  This method prints a message indicating that the connection is being closed.&#10; "
+	fontcolor=darkgreen
+];
+
+ConnectorTemplate1884383077XXXconnect0[
+	label="+ connect()"
+	style=filled
+	fillcolor=white
+	tooltip="ConnectorTemplate
+
+&#10;  Connects to the database.&#10;  This method prints a message indicating that a connection is being established.&#10; "
+	fontcolor=darkgreen
+];
+
+ConnectorTemplate1884383077XXXexecute0[
+	label="+ execute()"
+	style=filled
+	fillcolor=white
+	tooltip="ConnectorTemplate
+
+&#10;  Executes a query.&#10;  This method prints a message indicating that a query is being executed.&#10; "
+	fontcolor=darkgreen
+];
+
+ConnectorTemplate1884383077XXXpostProcessHook0[
+	label="+ postProcessHook()"
+	style=filled
+	fillcolor=white
+	tooltip="ConnectorTemplate
+
+&#10;  Hook method for post-processing.&#10;  This method can be overridden by subclasses to add additional behavior after processing the result.&#10; "
+	fontcolor=darkgreen
+];
+
+ConnectorTemplate1884383077XXXprocessResult0[
+	label="+ processResult()"
+	style=filled
+	fillcolor=white
+	tooltip="ConnectorTemplate
+
+&#10;  Abstract method to be implemented by subclasses to process the result of the query.&#10; "
+	fontcolor=darkgreen
+];
+
+ConnectorTemplate1884383077XXXrun0[
+	label="+ run()"
+	style=filled
+	fillcolor=white
+	tooltip="ConnectorTemplate
+
+&#10;  Template method that defines the sequence of steps for the connector.&#10;  This method calls the setup, connect, execute, processResult, postProcessHook, and close methods in order.&#10; "
+	penwidth=4
+	fontcolor=darkgreen
+];
+} 
+} 
+} 
+
+'edges    
+Client1884383077XXXmain1859653459 -> ConnectorTemplate1884383077XXXrun0;
+ConnectorTemplate1884383077XXXpostProcessHook0 -> MySqlConnector1884383077XXXpostProcessHook0;
+ConnectorTemplate1884383077XXXprocessResult0 -> MySqlConnector1884383077XXXprocessResult0;
+ConnectorTemplate1884383077XXXprocessResult0 -> OracleConnector1884383077XXXprocessResult0;
+ConnectorTemplate1884383077XXXrun0 -> ConnectorTemplate1884383077XXXclose0;
+ConnectorTemplate1884383077XXXrun0 -> ConnectorTemplate1884383077XXXconnect0;
+ConnectorTemplate1884383077XXXrun0 -> ConnectorTemplate1884383077XXXexecute0;
+ConnectorTemplate1884383077XXXrun0 -> ConnectorTemplate1884383077XXXpostProcessHook0;
+ConnectorTemplate1884383077XXXrun0 -> ConnectorTemplate1884383077XXXprocessResult0;
+MySqlConnector1884383077XXXpostProcessHook0 -> ConnectorTemplate1884383077XXXpostProcessHook0;
+    
+}
+@enduml
