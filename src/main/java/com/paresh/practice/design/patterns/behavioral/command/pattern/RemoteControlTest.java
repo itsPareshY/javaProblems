@@ -8,5 +8,6 @@ public class RemoteControlTest {
         LightOnCommand lightOn = new LightOnCommand(light);
         remoteControl.setCommand(lightOn);
         remoteControl.buttonPressed();
+        remoteControl.undoButtonPressed();
     }
 }
