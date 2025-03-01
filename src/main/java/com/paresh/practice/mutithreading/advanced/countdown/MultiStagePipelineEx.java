@@ -36,7 +36,7 @@ public class MultiStagePipelineEx {
         System.out.printf("Starting Stage %s ...%n", stage);
         for(Runnable task : tasks) {
             executorService.execute(() -> {
-                task.run();
+                task.run(); // Execute the task in the current thread if we call execute() method then it will be executed in a separate thread and we will need to supply countDownLatch to wait for the task to complete
                 stageLatch.countDown();
             });
         }
