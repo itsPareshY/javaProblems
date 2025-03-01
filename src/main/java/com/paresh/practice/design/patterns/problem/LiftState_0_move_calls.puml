@@ -1,0 +1,249 @@
+@startuml
+
+/' diagram meta data start
+config=CallConfiguration;
+{
+  "rootMethod": "com.paresh.practice.design.patterns.problem.LiftState#move(Lift,int)",
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": true,
+    "cutInterfaceStructures": true,
+    "cutDataStructures": true,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 3,
+    "backwardDepth": 3,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showMethodParametersTypes": false,
+    "showMethodParametersNames": false,
+    "showMethodReturnType": false,
+    "showPackageLevels": 2,
+    "showCallOrder": false,
+    "edgeMode": "MethodsOnly", // TypesOnly, MethodsOnly, TypesAndMethods, MethodsAndDirectTypeUsage
+    "showDetailedClassStructure": false
+  },
+  "rootClass": "com.paresh.practice.design.patterns.problem.LiftState",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="LR"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_995423943 { 
+   	label=paresh
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   subgraph cluster_1785808304 { 
+   	label=practice
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   subgraph cluster_1548036251 { 
+   	label=MoveCommand
+	labeljust=l
+	fillcolor=white
+	style=filled
+   
+   MoveCommand1974454201XXXexecute0[
+	label="+ execute()"
+	style=filled
+	fillcolor=white
+	tooltip="MoveCommand
+
+null"
+	fontcolor=darkgreen
+];
+} 
+
+subgraph cluster_1664653978 { 
+   	label=LiftInvoker
+	labeljust=l
+	fillcolor=white
+	style=filled
+   
+   LiftInvoker1974454201XXXexecuteCommand0[
+	label="+ executeCommand()"
+	style=filled
+	fillcolor=white
+	tooltip="LiftInvoker
+
+null"
+	fontcolor=darkgreen
+];
+} 
+
+subgraph cluster_1837777664 { 
+   	label=User
+	labeljust=l
+	fillcolor=white
+	style=filled
+   
+   User1974454201XXXupdate104431[
+	label="+ update()"
+	style=filled
+	fillcolor=white
+	tooltip="User
+
+null"
+	fontcolor=darkgreen
+];
+} 
+
+subgraph cluster_1838055360 { 
+   	label=Lift
+	labeljust=l
+	fillcolor=white
+	style=filled
+   
+   Lift1974454201XXXmove104431[
+	label="+ move()"
+	style=filled
+	fillcolor=white
+	tooltip="Lift
+
+null"
+	fontcolor=darkgreen
+];
+} 
+
+subgraph cluster_1978269432 { 
+   	label=IdleState
+	labeljust=l
+	fillcolor=white
+	style=filled
+   
+   IdleState1974454201XXXmove2077642160[
+	label="+ move()"
+	style=filled
+	fillcolor=white
+	tooltip="IdleState
+
+null"
+	fontcolor=darkgreen
+];
+} 
+
+subgraph cluster_383354382 { 
+   	label=MovingState
+	labeljust=l
+	fillcolor=white
+	style=filled
+   
+   MovingState1974454201XXXmove2077642160[
+	label="+ move()"
+	style=filled
+	fillcolor=white
+	tooltip="MovingState
+
+null"
+	fontcolor=darkgreen
+];
+} 
+
+subgraph cluster_548241677 { 
+   	label=MaintenanceState
+	labeljust=l
+	fillcolor=white
+	style=filled
+   
+   MaintenanceState1974454201XXXmove2077642160[
+	label="+ move()"
+	style=filled
+	fillcolor=white
+	tooltip="MaintenanceState
+
+null"
+	fontcolor=darkgreen
+];
+} 
+
+subgraph cluster_712801329 { 
+   	label=LiftState
+	labeljust=l
+	fillcolor=white
+	style=filled
+   
+   LiftState1974454201XXXmove2077642160[
+	label="+ move()"
+	style=filled
+	fillcolor=white
+	tooltip="LiftState
+
+null"
+	penwidth=4
+	fontcolor=darkgreen
+];
+} 
+} 
+} 
+
+'edges    
+IdleState1974454201XXXmove2077642160 -> Lift1974454201XXXmove104431;
+Lift1974454201XXXmove104431 -> LiftState1974454201XXXmove2077642160;
+Lift1974454201XXXmove104431 -> User1974454201XXXupdate104431;
+LiftInvoker1974454201XXXexecuteCommand0 -> MoveCommand1974454201XXXexecute0;
+LiftState1974454201XXXmove2077642160 -> IdleState1974454201XXXmove2077642160;
+LiftState1974454201XXXmove2077642160 -> MaintenanceState1974454201XXXmove2077642160;
+LiftState1974454201XXXmove2077642160 -> MovingState1974454201XXXmove2077642160;
+MoveCommand1974454201XXXexecute0 -> Lift1974454201XXXmove104431;
+    
+}
+@enduml

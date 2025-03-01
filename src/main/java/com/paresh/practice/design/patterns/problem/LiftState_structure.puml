@@ -1,0 +1,243 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": false,
+    "cutInterfaceStructures": false,
+    "cutDataStructures": false,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 6,
+    "backwardDepth": 6,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "com.paresh.practice.design.patterns.problem.LiftState",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_995423943 { 
+   	label=paresh
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   subgraph cluster_1785808304 { 
+   	label=practice
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   IdleState1974454201[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)IdleState</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ move(lift: Lift, floor: int)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Lift1974454201[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Lift</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   currentFloor: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   direction: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   observers: List&lt;Observer&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   state: LiftState [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ attach(observer: Observer)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ detach(observer: Observer)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ move(floor: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >- notifyObservers()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+LiftController1974454201[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)LiftController</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   assignmentStrategy: LiftAssignmentStrategy [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   lifts: List&lt;Lift&gt; [0..*]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ getInstance(liftCount: int): LiftController</TD></TR>
+<TR><TD ALIGN="LEFT" >+ requestLift(floor: int, direction: String): Lift</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+LiftInvoker1974454201[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)LiftInvoker</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   command: Command [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ executeCommand()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+LiftState1974454201[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(I)LiftState</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ move(lift: Lift, floor: int)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#F1E5FD"
+];
+
+MaintenanceState1974454201[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)MaintenanceState</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ move(lift: Lift, floor: int)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+MoveCommand1974454201[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)MoveCommand</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   floor: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   lift: Lift [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ execute()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+MovingState1974454201[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)MovingState</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ move(lift: Lift, floor: int)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+User1974454201[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)User</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   name: String [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ update(floor: int)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+} 
+
+'edges    
+IdleState1974454201 -> Lift1974454201[label="move() -> move()"];
+Lift1974454201 -> LiftState1974454201[label="state
+[0..1]"];
+Lift1974454201 -> User1974454201[arrowhead=none];
+LiftController1974454201 -> Lift1974454201[label="lifts
+[0..*]"];
+LiftInvoker1974454201 -> MoveCommand1974454201[label="command
+[0..1]", arrowhead=none];
+LiftState1974454201 -> IdleState1974454201[arrowhead=none, arrowtail=empty, dir=both];
+LiftState1974454201 -> MaintenanceState1974454201[arrowhead=none, arrowtail=empty, dir=both];
+LiftState1974454201 -> MovingState1974454201[arrowhead=none, arrowtail=empty, dir=both];
+MoveCommand1974454201 -> Lift1974454201[label="lift
+[0..1]"];
+    
+}
+@enduml
