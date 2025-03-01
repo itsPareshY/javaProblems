@@ -171,16 +171,20 @@ public class LinkedListSelfPractice<D> {
         D data;
         Node next;
 
+        // Node constructor with only data as argument
         public Node(D data) {
             this.data = data;
+            // By default, the next node is null when a new node is created
             this.next = null;
         }
     }
 
+    // Head of the linked list
     private Node head;
 
     //constructor name same as classname
     //no returntype in constructor
+    //
     public LinkedListSelfPractice() {
         this.head = null;
     }
