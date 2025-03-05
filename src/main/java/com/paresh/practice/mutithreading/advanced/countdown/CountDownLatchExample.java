@@ -3,6 +3,7 @@ package com.paresh.practice.mutithreading.advanced.countdown;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 public class CountDownLatchExample {
 
@@ -23,6 +24,7 @@ public class CountDownLatchExample {
         }
         try {
             latch.await();
+            latch.await(5 , TimeUnit.SECONDS);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
